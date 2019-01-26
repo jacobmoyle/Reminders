@@ -1,3 +1,7 @@
+var dotenv = require('dotenv');
+dotenv.load();
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 const express = require('express');
 const app = express();
 

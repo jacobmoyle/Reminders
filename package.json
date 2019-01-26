@@ -4,9 +4,10 @@
   "description": "Check in on goals via text message",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "mocha ./tests --recursive"
   },
-  "author": "",
+  "author": "Matt Villwock && Jacob Moyle",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"

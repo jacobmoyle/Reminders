@@ -1,0 +1,11 @@
+{
+  "name": "reminders",
+  "version": "1.0.0",
+  "description": "Check in on goals via text message",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

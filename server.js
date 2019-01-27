@@ -1,19 +1,28 @@
-const dotenv = require('dotenv');
+// --------------------- // ---------------------
+// Setup Shit
+// --------------------- // ---------------------
+const dotenv = require("dotenv");
 dotenv.load();
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
-const express = require('express');
+const express = require("express");
 const app = express();
 
-// route callbacks (essentially controller actions)
-const createReminder = require('./routes/create');
+// --------------------- // ---------------------
+// Controller (function) Imports
+// --------------------- // ---------------------
+const createReminder = require("./route-handlers/reminders");
 
-app.get('/', function(req, res) {
-  res.send('Hello World');
+// --------------------- // ---------------------
+// Actual Routoing
+// --------------------- // ---------------------
+
+app.get("/", function(req, res) {
+  res.send("Hello World");
 });
 
-app.post('/create', createReminder(req, res))
+app.post("/create", createReminder(req, res));
 
 app.listen(3000, function() {
-  console.log('Listening on port 3000');
+  console.log("Listening on port 3000");
 });

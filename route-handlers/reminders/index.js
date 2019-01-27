@@ -1,21 +1,25 @@
+var accountSid = process.env.ACCOUNT_SID;
+var authToken = process.env.AUTH_TOKEN;
+var twilio = require("twilio");
+var client = new twilio(accountSid, authToken);
+
 module.exports = {
-  // replace with Twilio logic
-    hello: function(req, res) {
-        if (!req.body.name) {
-            res.send('An error occurred: Name is a required paramter');
-        }
-    }
+  create: function(req, res) {
+    client.messages
+      .create({
+        body: req.body,
+        to: "+17755443609", // Text this number
+        from: process.env.PHONE_NUMBER // From a valid Twilio number
+      })
+      .then(message => {
+        // not sure we need anything here
+        // maybe make a record that we sent a text?
+        // maybe update some values
+        console.log(message.sid);
+      })
+      .catch(err => {
+        console.log(err);
+        // handle Error here... webhook saying message failed?
+      });
+  }
 };
-
-
-// const accountSid = 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-// const authToken = 'your_auth_token';
-// const client = require('twilio')(accountSid, authToken);
-
-// client.calls
-//   .create({
-//     url: 'http://demo.twilio.com/docs/voice.xml',
-//     to: '+14155551212',
-//     from: '+15017250604',
-//   })
-//   .then(call => process.stdout.write(call.sid));

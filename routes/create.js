@@ -1,4 +1,5 @@
 module.exports = {
+  // replace with Twilio logic
     hello: function(req, res) {
         if (!req.body.name) {
             res.send('An error occurred: Name is a required paramter');

@@ -11,7 +11,7 @@ const app = express();
 // --------------------- // ---------------------
 // Controller (function) Imports
 // --------------------- // ---------------------
-const createReminder = require("./route-handlers/reminders");
+const { create } = require("./route-handlers/reminders");
 
 // --------------------- // ---------------------
 // Actual Routoing
@@ -21,7 +21,7 @@ app.get("/", function(req, res) {
   res.send("Hello World");
 });
 
-app.post("/create", createReminder);
+app.post("/create", create);
 
 app.listen(3000, function() {
   console.log("Listening on port 3000");

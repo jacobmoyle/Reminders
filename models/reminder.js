@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const reminderSchema = mongoose.Schema({
   text: String,
   uuid: String,
-  userId: String, // not sure we need this
+  // userId: String, // not sure we need this
   updates: Array,
 });
 

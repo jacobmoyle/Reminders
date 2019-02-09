@@ -13,7 +13,7 @@ const app = express();
 // --------------------- // ---------------------
 // Controller (function) Imports
 // --------------------- // ---------------------
-const { create } = require('./route-handlers/reminders');
+const { create, update } = require('./route-handlers/reminders');
 
 // --------------------- // ---------------------
 // Actual Routoing
@@ -24,6 +24,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/create', create);
+
+app.put('/update', update);
 
 // start up server
 app.listen(3000, () => {

@@ -1,33 +1,50 @@
 // --------------------- // ---------------------
 // Setup Shit
 // --------------------- // ---------------------
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 
 dotenv.load();
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
-const express = require('express');
+const bodyParser = require("body-parser");
+const express = require("express");
+global.Promise = require("bluebird");
 
 const app = express();
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+const mongoose = require("mongoose");
+mongoose
+  .connect("mongodb://localhost:27017/reminders", {
+    useNewUrlParser: true
+  })
+  .then(() => {
+    console.log("DB Connect: Success");
+  })
+  .catch(() => {
+    console.error("DB Connection: Failure");
+  });
 
 // --------------------- // ---------------------
 // Controller (function) Imports
 // --------------------- // ---------------------
-const { create, update } = require('./route-handlers/reminders');
+// const { update } = require("./route-handlers/reminders");
+const { create } = require("./route-handlers/transactions");
 
 // --------------------- // ---------------------
 // Actual Routoing
 // --------------------- // ---------------------
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
+app.get("/", (req, res) => {
+  res.send("Hello World");
 });
 
-app.post('/create', create);
+app.post("/create", create);
 
-app.put('/update', update);
+// app.put("/update", update);
 
 // start up server
 app.listen(3000, () => {
-  console.log('Listening on port 3000');
+  console.log("Listening on port 3000");
 });

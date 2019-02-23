@@ -1,7 +1,5 @@
-import User from './user';
-import Reminder from './reminder';
+const User = require('./user');
+const Reminder = require('./reminder');
+const Transaction = require('./transaction');
 
-export {
-  User,
-  Reminder,
-};
+module.exports = { User, Reminder, Transaction };

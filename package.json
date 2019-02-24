@@ -12,6 +12,7 @@
   "dependencies": {
     "bluebird": "^3.5.3",
     "dotenv": "^6.2.0",
+    "emojic": "^1.1.15",
     "express": "^4.16.4",
     "mongoose": "^5.4.10",
     "twilio": "^3.27.1",

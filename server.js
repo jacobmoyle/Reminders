@@ -14,16 +14,19 @@ const app = express();
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+const emojic = require("emojic");
+
 const mongoose = require("mongoose");
 mongoose
   .connect("mongodb://localhost:27017/reminders", {
     useNewUrlParser: true
   })
   .then(() => {
-    console.log("DB Connect: Success");
+    const successEmoji = "\uF600";
+    console.log(`DB Connect: Success`, emojic.whiteCheckMark);
   })
   .catch(() => {
-    console.error("DB Connection: Failure");
+    console.error("DB Connection: Failure", emojic.x);
   });
 
 // --------------------- // ---------------------

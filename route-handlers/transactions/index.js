@@ -23,8 +23,12 @@ module.exports = {
       console.log("in try block ");
 
       let promise = await transaction.save();
+      const success = await handleSuccess(transaction);
+      console.log(success);
       console.log("resolved promise: ", promise);
     } catch (err) {
+      const fail = await handleFailure(err, transaction);
+      console.log(fail);
       console.log("ru-roh :", err);
     }
 
